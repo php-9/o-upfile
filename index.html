@@ -26,7 +26,10 @@
 	<script>
 		/*ofile 文件上传工具 QQ:68242331 http://www.noweb.win/ */
 
-		jQuery('#ofileupload').oFile();
+		jQuery('#ofileupload').oFile({
+				phpurl:'.',//php处理文件路径
+				fileurl:'./up',//上传文件保存路径
+		});
 	</script>
 </html>
 
