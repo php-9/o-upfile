@@ -27,7 +27,7 @@
                	return false;
                })
 
-               //绑定移动事件
+               //绑定移动事件,左移
                self.on('click','i',function(){
                	var moveele=jQuery(this).parent();
                	moveele.prev().before(moveele);
@@ -35,8 +35,18 @@
                	
                })
 
+               //绑定移动事件,右移-----------------------------
+               self.on('click','u',function(){
+                    var moveele=jQuery(this).parent();
+                    moveele.nextUntil('.ofile-add').eq(0).after(moveele);
+                    return false;            
+                    
+               })
+
                //绑定点击图片事件
                self.on('click','li',function(){
+
+                    jQuery('.o-file-vi').css('top',jQuery(window).scrollTop()+'px' );
                	jQuery('.o-file-vi img').attr('src',jQuery(this).find('img').attr('src') ).parent().fadeIn(200);
                	
                	return false;
@@ -44,7 +54,7 @@
 
                //绑定点击大图片退出图片事件
                jQuery('body').on('click','.o-file-vi',function(){
-               	jQuery(this).fadeOut(200);
+                   	jQuery(this).fadeOut(200);
                	return false;
                });
                //文件上传控件change事件
@@ -80,7 +90,7 @@
      							    		jQuery.each(res.data, function(i, item){
      							    			//html
      							    			html += '<li>';
-     							    			html += '<img src="'+settings.fileurl+'/'+item.name+'"><span></span><i><=</i>';
+     							    			html += '<img src="'+settings.fileurl+'/'+item.name+'"><span>╳</span><i>＜</i><u>＞</u>';
      							    			html +=	'<input type="hidden" name="pic[]" value="'+settings.fileurl+'/'+item.name+'" >';
      							    			html += '</li>';
      							    			
